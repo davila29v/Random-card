@@ -1,13 +1,14 @@
+/* eslint-disable */
+import "bootstrap";
 import "./style.css";
 
-window.onload = () => {
-  document.querySelector(".card").classList.add(generateRandomSuit());
-  document.querySelector(".card").innerHTML = generateRandomNumber();
-};
+import "./assets/img/rigo-baby.jpg";
+import "./assets/img/4geeks.ico";
 
-let generateRandomNumber = () => {
-  let numbers = [
-    "A",
+window.onload = function() {
+  //write your code here
+  let house = ["diamond", "heart", "spade", "club"];
+  let values = [
     "2",
     "3",
     "4",
@@ -19,14 +20,40 @@ let generateRandomNumber = () => {
     "10",
     "J",
     "Q",
-    "K"
+    "K",
+    "A"
   ];
-  let indexNumbers = Math.floor(Math.random() * numbers.length);
-  return numbers[indexNumbers];
-};
+  let randomHouse = GetRandomValue(house);
+  let randomValue = GetRandomValue(values);
+  let cardElement = document.getElementById("card");
+  let leftSymbol = this.document.getElementById("leftSymbol");
+  let rightSymbol = this.document.getElementById("rightSymbol");
+  let number = this.document.getElementById("number");
 
-let generateRandomSuit = () => {
-  let suit = ["diamond", "spades", "hearts", "club"];
-  let indexNumbers = Math.floor(Math.random() * suit.length);
-  return suit[indexSuit];
+  cardElement.className = "card " + randomHouse;
+  number.innerHTML = randomValue;
+
+  switch (randomHouse) {
+    case "diamond":
+      leftSymbol.innerHTML = rightSymbol.innerHTML = "&#9830;";
+      break;
+    case "heart":
+      leftSymbol.innerHTML = rightSymbol.innerHTML = "&#9829;";
+      break;
+    case "spade":
+      leftSymbol.innerHTML = rightSymbol.innerHTML = "&#9824;";
+      break;
+    case "club":
+      leftSymbol.innerHTML = rightSymbol.innerHTML = "&#9827;";
+      break;
+
+    default:
+      break;
+  }
+
+  function GetRandomValue(house) {
+    let randomIndex = Math.floor(Math.random() * (house.length - 1));
+
+    return house[randomIndex];
+  }
 };
